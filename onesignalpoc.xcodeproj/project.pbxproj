@@ -66,7 +66,7 @@
 		F88ECEE71F8BC3EC007DF5DC /* NotificationService.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = NotificationService.h; sourceTree = "<group>"; };
 		F88ECEE81F8BC3EC007DF5DC /* NotificationService.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = NotificationService.m; sourceTree = "<group>"; };
 		F88ECEEA1F8BC3EC007DF5DC /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		F88ECEF11F8BC555007DF5DC /* onesignalpoc.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = onesignalpoc.entitlements; sourceTree = "<group>"; };
+		F88ECEF41F8BDBC7007DF5DC /* onesignalpoc.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = onesignalpoc.entitlements; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -132,7 +132,7 @@
 		F88ECEB71F8BB673007DF5DC /* onesignalpoc */ = {
 			isa = PBXGroup;
 			children = (
-				F88ECEF11F8BC555007DF5DC /* onesignalpoc.entitlements */,
+				F88ECEF41F8BDBC7007DF5DC /* onesignalpoc.entitlements */,
 				F88ECEB81F8BB673007DF5DC /* AppDelegate.h */,
 				F88ECEB91F8BB673007DF5DC /* AppDelegate.m */,
 				F88ECEBB1F8BB673007DF5DC /* ViewController.h */,
