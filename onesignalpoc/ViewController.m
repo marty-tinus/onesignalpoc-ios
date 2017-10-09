@@ -2,9 +2,6 @@
 //  ViewController.m
 //  onesignalpoc
 //
-//  Created by Andre Sampaio on 09/10/2017.
-//  Copyright © 2017 Andre Sampaio. All rights reserved.
-//
 
 #import "ViewController.h"
 

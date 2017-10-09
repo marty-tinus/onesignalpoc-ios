@@ -2,11 +2,9 @@
 //  AppDelegate.m
 //  onesignalpoc
 //
-//  Created by Andre Sampaio on 09/10/2017.
-//  Copyright © 2017 Andre Sampaio. All rights reserved.
-//
 
 #import "AppDelegate.h"
+#import <OneSignal/OneSignal.h>
 
 @interface AppDelegate ()
 
@@ -16,9 +14,28 @@
 
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
-    // Override point for customization after application launch.
+    [Plot initializeWithLaunchOptions:launchOptions delegate:self];
+    [OneSignal initWithLaunchOptions:launchOptions
+                               appId:@"YOUR_APP_ID"
+            handleNotificationAction:nil
+                            settings:@{kOSSettingsKeyAutoPrompt: @false}];
+    OneSignal.inFocusDisplayType = OSNotificationDisplayTypeNotification;
+
+    [OneSignal promptForPushNotificationsWithUserResponse:^(BOOL accepted) {
+        NSLog(@"User accepted notifications: %d", accepted);
+    }];
     return YES;
 }
+    
+- (void)plotHandleGeotriggers:(PlotHandleGeotriggers*)geotriggerHandler {
+        for (PlotGeotrigger* geotrigger in geotriggerHandler.geotriggers) {
+            NSString* data = [geotrigger.userInfo objectForKey:PlotGeotriggerDataKey];
+            NSString *now = [NSString stringWithFormat:@"%f",[[NSDate date] timeIntervalSince1970]];
+            [OneSignal sendTag:data value:now];
+            NSLog(@"Sending tag pair:(%@,%@)",data,now);
+        }
+        [geotriggerHandler markGeotriggersHandled:geotriggerHandler.geotriggers];
+    }
 
 
 - (void)applicationWillResignActive:(UIApplication *)application {

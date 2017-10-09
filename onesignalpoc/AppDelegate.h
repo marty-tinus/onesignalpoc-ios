@@ -2,13 +2,12 @@
 //  AppDelegate.h
 //  onesignalpoc
 //
-//  Created by Andre Sampaio on 09/10/2017.
-//  Copyright © 2017 Andre Sampaio. All rights reserved.
-//
 
 #import <UIKit/UIKit.h>
+#import <PlotProjects/Plot.h>
 
-@interface AppDelegate : UIResponder <UIApplicationDelegate>
+
+@interface AppDelegate : UIResponder <UIApplicationDelegate,PlotDelegate>
 
 @property (strong, nonatomic) UIWindow *window;
 
