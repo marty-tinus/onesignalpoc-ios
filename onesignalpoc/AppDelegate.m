@@ -29,13 +29,15 @@
     
 - (void)plotHandleGeotriggers:(PlotHandleGeotriggers*)geotriggerHandler {
         for (PlotGeotrigger* geotrigger in geotriggerHandler.geotriggers) {
-            NSString* data = [geotrigger.userInfo objectForKey:PlotGeotriggerDataKey];
+            NSString* jsonString = [geotrigger.userInfo objectForKey:PlotGeotriggerDataKey];
+            NSData *dataJson = [jsonString dataUsingEncoding:NSUTF8StringEncoding];
+            NSMutableDictionary * data = [NSJSONSerialization JSONObjectWithData:dataJson options:0 error:NULL];
             NSString *now = [NSString stringWithFormat:@"%f",[[NSDate date] timeIntervalSince1970]];
-            [OneSignal sendTag:data value:now];
-            NSLog(@"Sending tag pair:(%@,%@)",data,now);
+            [OneSignal sendTag:[data objectForKey:@"key"] value:now];
+            NSLog(@"Sending tag pair:(%@,%@)",[data objectForKey:@"key"],now);
         }
         [geotriggerHandler markGeotriggersHandled:geotriggerHandler.geotriggers];
-    }
+}
 
 
 - (void)applicationWillResignActive:(UIApplication *)application {
