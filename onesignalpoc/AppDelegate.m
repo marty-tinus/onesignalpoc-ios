@@ -32,9 +32,12 @@
             NSString* jsonString = [geotrigger.userInfo objectForKey:PlotGeotriggerDataKey];
             NSData *dataJson = [jsonString dataUsingEncoding:NSUTF8StringEncoding];
             NSMutableDictionary * data = [NSJSONSerialization JSONObjectWithData:dataJson options:0 error:NULL];
-            NSString *now = [NSString stringWithFormat:@"%f",[[NSDate date] timeIntervalSince1970]];
-            [OneSignal sendTag:[data objectForKey:@"key"] value:now];
-            NSLog(@"Sending tag pair:(%@,%@)",[data objectForKey:@"key"],now);
+            NSString *now = [NSString stringWithFormat:@"%.f",[[NSDate date] timeIntervalSince1970]];
+            NSString* key = [data objectForKey:@"key"];
+            if (key){
+                [OneSignal sendTag:key value:now];
+                NSLog(@"Sending tag pair:(%@,%@)",key,now);
+            }
         }
         [geotriggerHandler markGeotriggersHandled:geotriggerHandler.geotriggers];
 }
