@@ -16,7 +16,7 @@
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     [Plot initializeWithLaunchOptions:launchOptions delegate:self];
     [OneSignal initWithLaunchOptions:launchOptions
-                               appId:@"YOUR_APP_ID"
+                               appId:@"YOUR_ID"
             handleNotificationAction:nil
                             settings:@{kOSSettingsKeyAutoPrompt: @false}];
     OneSignal.inFocusDisplayType = OSNotificationDisplayTypeNotification;
