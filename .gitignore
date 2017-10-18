@@ -62,4 +62,6 @@ fastlane/test_output
 
 iOSInjectionProject/
 
-plotconfig.json
+onesignalpoc/plotconfig.json
+onesignalpoc/GoogleService-Info.plist
+GoogleService-Info.plist

@@ -5,6 +5,7 @@
 
 #import "AppDelegate.h"
 #import <OneSignal/OneSignal.h>
+@import Firebase;
 
 @interface AppDelegate ()
 
@@ -14,6 +15,7 @@
 
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
+    [FIRApp configure];
     [Plot initializeWithLaunchOptions:launchOptions delegate:self];
     [OneSignal initWithLaunchOptions:launchOptions
                                appId:@"YOUR_ID"
@@ -25,6 +27,10 @@
         NSLog(@"User accepted notifications: %d", accepted);
     }];
     return YES;
+}
+
+-(void)application:(UIApplication *)application didReceiveRemoteNotification:(NSDictionary *)userInfo fetchCompletionHandler:(void (^)(UIBackgroundFetchResult))completionHandler {
+    [Plot didReceiveRemoteNotification:userInfo fetchCompletionHandler:completionHandler];
 }
     
 - (void)plotHandleGeotriggers:(PlotHandleGeotriggers*)geotriggerHandler {

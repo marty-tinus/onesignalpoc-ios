@@ -13,4 +13,5 @@ end
 
 target 'OneSignalNotificationServiceExtension' do
   pod 'OneSignal', '>= 2.5.2', '< 3.0'
+  pod 'Firebase/Messaging', '3.16.0'
 end
